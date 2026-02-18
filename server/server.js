@@ -6,6 +6,16 @@ const PORT = 3001;
 
 app.get("/status", (req, res) => res.json({ status: "ok" }));
 app.get("/products", (req, res) => res.json(products));
+app.get("/product/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const product = products.find((product) => product.id === id);
+
+  if (product) {
+    res.json(product);
+  } else {
+    res.status(404).json({ error: "Product not found" });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
