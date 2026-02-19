@@ -4,7 +4,6 @@ import products from "./data/products.js";
 const app = express();
 const PORT = 3001;
 
-app.get("/status", (req, res) => res.json({ status: "ok" }));
 app.get("/products", (req, res) => res.json(products));
 app.get("/product/:id", (req, res) => {
   const id = Number(req.params.id);
